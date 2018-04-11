@@ -4,7 +4,15 @@ $(document).ready(function() {
         showOtherMonths: true,
     });
     fillCourses();
+    fillYears();
+    fillDays();
+
+    $('#birth-year, #birth-month').on('change', function() {
+        fillDays();
+    })
+
     //fill();
+
     $('button').on('click', function() {
         alert($("#full-name").val());
         $("#full-name").text("");
@@ -65,6 +73,10 @@ function clearAll() {
     $("#full-name").focus();
 }
 
+function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -91,3 +103,24 @@ $.ajax({
     });
 }
 
+function fillYears() {
+    var i;
+    for (i=1970; i <= (new Date()).getFullYear(); i++ ) {
+        $('#birth-year').append(new Option(i, i, true, false));
+    };
+}
+
+function fillDays() {
+    var year = $('#birth-year').val();
+    var month = $('#birth-month').val();
+    var numberOfDays = daysInMonth(month, year)
+    $('#birth-day')
+        .find('option')
+        .remove()
+        .end();
+    var i;
+    for (i=1; i <= numberOfDays; i++) {
+        $('#birth-day').append(new Option (i, i, true, false));
+    }
+
+}
