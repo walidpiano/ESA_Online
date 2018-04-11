@@ -85,7 +85,7 @@ $.ajax({
         dataType: "json",
         success: function(response) {
             $.each(response, function (index, topic) {
-                $('#course').append(new Option(topic.name, topic.id, true, false));
+                $('#course').append(new Option(topic.course_name, topic.id, true, false));
             });
         }
     });

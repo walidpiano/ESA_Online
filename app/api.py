@@ -1,14 +1,14 @@
 from flask import render_template, request, redirect, url_for, jsonify, abort
 from app import models
 from app import app, stores
-import pyodbc
+
+course_store = stores.CourseStore()
 
 
 @app.route("/api/courses/")
 def get_courses():
-    result = stores.CourseStore.get_all_courses()
+    result = [course.as_dict() for course in course_store.get_all()]
     return jsonify(result)
-
 
 
 @app.errorhandler(400)

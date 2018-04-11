@@ -1,37 +1,23 @@
-from app import models
+from app import models, db
+from sqlalchemy import desc, func
 
 
-class CountryStore():
+class BaseStore():
+    def __init__(self, data_provider):
+        self.data_provider = data_provider
 
-    @staticmethod
-    def get_all_countries():
-        result = models.Query.run_query('SELECT * FROM tblCountry ORDER BY Country;')
-        return result
+    def get_all(self):
+        return self.data_provider.query.all()
 
-
-class StateStore():
-
-    @staticmethod
-    def get_all_states():
-        result = models.Query.run_query('SELECT * FROM tblState ORDER BY StateName;')
-        return result
+    def add(self, entity):
+        db.session.add(entity)
+        db.session.commit()
+        return entity
 
 
-class CityStore():
+class CourseStore(BaseStore):
 
-    @staticmethod
-    def get_all_cities():
-        result = models.Query.run_query('SELECT * FROM tblCity ORDER BY CityName;')
-        return result
+    def __init__(self):
+        super().__init__(models.Course)
 
-class CourseStore():
-
-    @staticmethod
-    def get_all_courses():
-        query = models.Query.run_query('SELECT ID, CourseName FROM tblCourses ORDER BY CourseName;')
-        result = []
-        for e in query:
-            course = models.Course(e[0], e[1])
-            result.append(course.as__dict())
-        return result
 
