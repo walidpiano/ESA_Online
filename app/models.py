@@ -47,7 +47,7 @@ class Query:
         '''
 
         conn_str = (
-            r'Driver={SQL Server};'
+            r'Driver={FreeTDS};'
             r'Server=ESAOnlineDB.mssql.somee.com;'
             r'Database=ESAOnlineDB;'
             r'uid=walid2_SQLLogin_1;'
