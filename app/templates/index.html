@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>ESA Registration</title>
+    <link href="../static/css/style.css" rel="stylesheet">
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/jquery-ui.min.js"></script>
+    <script src="static/js/main.js"></script>
+
+    
+</head>
+<body>
+    <header>
+        <div class="ribbon">
+            <img id="logo" src="..\static\img\ESASplash.png" alt="ESA logo">
+        </div>
+        <div id="header-to-stick">
+            <h2>Student Course Registration Request</h2>
+        </div>
+    </header>
+
+    <main>
+        <form class="content">
+            
+            <div class="form-container">
+                
+                <input type="image" id="student-image" src="../static/img/empty_profile.jpg">
+                <input type="file" id="select-pic" onchange="readURL(this);">
+                <table>
+                    <col width="25%">
+                    <col width="75%">
+                    
+                    <tr>
+                        <td>
+                            <label for="student-type">Student Type:</label>
+                        </td>
+                        <td>
+                            <select name="Student Type" id="student-type">
+                                <option value="New">New</option>
+                                <option value="Old">Old</option>
+                            </select>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="full-name">Full Name:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="full-name" placeholder="full name" required>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="address">Address:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="address" placeholder="address" required>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="country">Country:</label>
+                        </td>
+                        <td>
+                            <input id="country" type="text" placeholder="country" required>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="state">State:</label>
+                        </td>
+                        <td>
+                            <input id="state" type="text" placeholder="state" required>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="city">City:</label>
+                        </td>
+                        <td>
+                            <input id="city" type="text" placeholder="city" required>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="email">E-mail:</label>
+                        </td>
+                        <td>
+                            <input type="email" id="email" placeholder="e-mail address" required>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="birth-date">Birth Date:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="birth-date" placeholder="dd/MM/yyyy" required>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="course">Course:</label>
+                        </td>
+                        <td>
+                            <select name="course" id="course">
+
+                            </select>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="comments">Comments:</label>
+                        </td>
+                        <td>
+                            <textarea id="comments" rows="5" placeholder="comments..."></textarea>
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+                <input type="button" onclick="clearAll()" id="cancel" value="Cancel">
+                <input type="submit" id="submit" value="Send">
+            </div>
+            
+            
+
+        </form>
+    </main>
+    
+    <footer>
+        <p id="my-signature">Developed by: <a id="my-mail" href="mailto:walidpiano@yahoo.com">Walid Zakaria</a></p>
+    </footer>
+
+</body>
+</html>
+
