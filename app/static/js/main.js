@@ -11,7 +11,7 @@ $(document).ready(function() {
         fillDays();
     })
 
-    //fill();
+    fill();
 
     $('button').on('click', function() {
         alert($("#full-name").val());
@@ -38,13 +38,51 @@ $(document).ready(function() {
     $(".content").submit(function(event) {
     alert("ttt");
     event.preventDefault();
-    if ($(".content").valid()) {
-        alert('ok');
-    } else {
-        alert('no');
+
+    student_image = $('#student-image').val();
+    student_type = $('#student-type').val();
+    full_name = $('#full-name').val();
+    address = $('#address').val();
+    country = $('#country').val();
+    state = $('#state').val();
+    city = $('#city').val();
+    email = $('#email').val();
+    birth_year = $('#birth-year').val();
+    birth_month = $('#birth-month').val();
+    birth_day = $('#birth-day').val();
+    course = $('#course').val();
+    comments = $('#comments').val();
+
+    registration = {
+        "student_image": student_image,
+        "student_type": student_type,
+        "full_name": full_name,
+        "address": address,
+        "country": country,
+        "state": state,
+        "city": city,
+        "email_address": email,
+        "birth_year": birth_year,
+        "birth_month": birth_month,
+        "birth_day": birth_day,
+        "course": course,
+        "comments": comments,
     }
-    alert('done');
-})
+    alert(registration);
+    $.ajax({
+        type: "POST",
+        url: "api/register",
+        data: JSON.stringify(registration),
+        contentType: "application/json; charset=UTF-8",
+        dataType: "json",
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+});
 
 });
 

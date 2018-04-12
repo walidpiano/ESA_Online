@@ -21,3 +21,8 @@ class CourseStore(BaseStore):
         super().__init__(models.Course)
 
 
+class SendRegistration:
+
+    @staticmethod
+    def send_registration(registration):
+        return registration
