@@ -110,7 +110,6 @@ table {
 #birth-year, #birth-month, #birth-day {
     width: 25%;
     display: inline;
-
 }
 .all-date {
     text-align: left;
@@ -122,6 +121,7 @@ table {
     }
     h2 {
         font-size: 15px;
+        margin: 10px auto 8px auto;
     }
     form {
         width: 100%;
@@ -135,9 +135,19 @@ table {
     }
     input, select, textarea {
         width: 90%;
-        font-size: 16px;
-        padding: 10px;
+        font-size: 17px;
+        padding: 3px;
         margin: 5px;
+    }
+    #birth-year {
+        width: 35%;
+        display: inline;
+        margin: 0 auto;
+    }
+    #birth-day {
+        width: 20%;
+        display: inline;
+        margin: 0 auto;
     }
     footer {
         height: 30px;
