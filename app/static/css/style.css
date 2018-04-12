@@ -121,10 +121,11 @@ table {
     }
     h2 {
         font-size: 15px;
-        margin: 10px auto 8px auto;
+        padding: 10px 0 12px 0;
     }
     form {
         width: 100%;
+        border-radius: 0%;
     }
     label {
         font-size: 14px;
@@ -136,22 +137,24 @@ table {
     input, select, textarea {
         width: 90%;
         font-size: 17px;
-        padding: 3px;
+        padding: 5px 3px 5px 3px;
         margin: 5px;
     }
     #birth-year {
         width: 35%;
         display: inline;
-        margin: 0 auto;
+        padding: 5px 1px 5px 1px;
     }
     #birth-day {
         width: 20%;
         display: inline;
-        margin: 0 auto;
+        padding: 5px 1px 5px 1px;
     }
     footer {
-        height: 30px;
+        margin: 0auto;
+        height: 40px;
         padding: 0;
+        padding: 5px 1px 7px 1px;
     }
     #my-signature {
         margin: 5px auto;
