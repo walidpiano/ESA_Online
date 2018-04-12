@@ -36,7 +36,7 @@ $(document).ready(function() {
     }
 
     $(".content").submit(function(event) {
-    alert("ttt");
+
     event.preventDefault();
 
     student_image = $('#student-image').val();
