@@ -15,13 +15,19 @@ def get_courses(category):
     return jsonify(result)
 
 
+@app.route("/api/courses/show-all/")
+def get_all_courses():
+    result = [course.as_dict() for course in course_store.get_all()]
+    return jsonify(result)
+
+
 @app.route("/api/courses/add", methods=["POST"])
 def add_courses():
     request_data = request.get_json()
     course_store.delete()
     new_courses = []
     for course_row in request_data:
-        new_course = models.Course(id=course_row['id'], course=course_row['course'])
+        new_course = models.Course(id=course_row['id'], category=course_row['category'], course=course_row['course'])
         course_store.add(new_course)
         new_courses.append(new_course.as_dict())
 
