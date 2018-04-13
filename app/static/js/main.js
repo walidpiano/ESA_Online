@@ -5,6 +5,7 @@ $(document).ready(function() {
     });
 
     fillCourses();
+    fillInstructors();
     fillYears();
     fillDays();
     fillCountries();
@@ -138,6 +139,19 @@ function readURL(input) {
 
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+function fillInstructors() {
+$.ajax({
+        type: "GET",
+        url: "/api/instructors/get",
+        dataType: "json",
+        success: function(response) {
+            $.each(response, function (index, topic) {
+                $('#instructor').append(new Option(topic.instructor, topic.instructor, true, false));
+            });
+        }
+    });
 }
 
 function fillCourses() {

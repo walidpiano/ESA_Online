@@ -3,7 +3,7 @@ from app import models
 from app import app, stores
 
 course_store = stores.CourseStore()
-
+instructor_store = stores.InstructorStore()
 
 @app.route("/api/courses/get")
 def get_courses():
@@ -19,9 +19,30 @@ def add_courses():
     for course_row in request_data:
         new_course = models.Course(id=course_row['id'], course=course_row['course'])
         course_store.add(new_course)
-        new_courses.append(new_course)
-        
-    result = jsonify(new_course.as_dict())
+        new_courses.append(new_course.as_dict())
+
+    result = jsonify(new_courses)
+
+    return result
+
+
+@app.route("/api/instructors/get")
+def get_instructors():
+    result = [instructor.as_dict() for instructor in instructor_store.get_all()]
+    return jsonify(result)
+
+
+@app.route("/api/instructors/add", methods=["POST"])
+def add_instructors():
+    request_data = request.get_json()
+    instructor_store.delete()
+    new_instructors = []
+    for instructor_row in request_data:
+        new_instructor = models.Instructor(id=instructor_row['id'], instructor=instructor_row['instructor'])
+        instructor_store.add(new_instructor)
+        new_instructors.append(new_instructor.as_dict())
+
+    result = jsonify(new_instructors)
 
     return result
 
