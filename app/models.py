@@ -46,6 +46,20 @@ class Category(db.Model):
         }
 
 
+class Place(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    place = db.Column(db.String(100))
+
+    def __repr__(self):
+        return f'ID: {self.id}, Place: {self.place}'
+
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "place": self.place
+        }
+
+
 class Registration:
 
     def __init__(self, student_image, student_type, full_name, address, country, state, city, email_address

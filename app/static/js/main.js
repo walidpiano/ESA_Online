@@ -10,12 +10,13 @@ $(document).ready(function() {
     fillDays();
     $('#category').append(new Option("--select--", "", true, false));
     fillCategories()
+    fillPlaces()
     $('.old').addClass('hide');
 
     $('#birth-year, #birth-month').on('change', function() {
         fillDays();
     })
-
+    fillCountries();
     //fill();
 
     $("#student-image").on("click", function() {
@@ -188,6 +189,19 @@ $.ajax({
             $('#course').html("");
             $.each(response, function (index, topic) {
                 $('#course').append(new Option(topic.course, topic.course, true, false));
+            });
+        }
+    });
+}
+
+function fillPlaces() {
+$.ajax({
+        type: "GET",
+        url: "/api/places/show",
+        dataType: "json",
+        success: function(response) {
+            $.each(response, function (index, topic) {
+                $('#place').append(new Option(topic.place, topic.place, true, false));
             });
         }
     });

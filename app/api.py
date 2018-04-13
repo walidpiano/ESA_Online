@@ -5,6 +5,7 @@ from app import app, stores
 course_store = stores.CourseStore()
 instructor_store = stores.InstructorStore()
 category_store = stores.CategoryStore()
+place_store = stores.PlaceStore()
 
 
 @app.route("/api/courses/show/<int:category>")
@@ -55,17 +56,38 @@ def get_categories():
     return jsonify(result)
 
 
-@app.route("/api/categories/show", methods=["POST"])
+@app.route("/api/categories/add", methods=["POST"])
 def add_categories():
     request_data = request.get_json()
     category_store.delete()
     new_categories = []
     for category_row in request_data:
-        new_category = models.Category(id=category_row['id'], categor=category_row['category'])
+        new_category = models.Category(id=category_row['id'], category=category_row['category'])
         category_store.add(new_category)
         new_categories.append(new_category.as_dict())
 
     result = jsonify(new_categories)
+
+    return result
+
+
+@app.route("/api/places/show")
+def get_places():
+    result = [place.as_dict() for place in place_store.get_all()]
+    return jsonify(result)
+
+
+@app.route("/api/places/add", methods=["POST"])
+def add_places():
+    request_data = request.get_json()
+    place_store.delete()
+    new_places = []
+    for place_row in request_data:
+        new_place = models.Place(id=place_row['id'], place=place_row['place'])
+        place_store.add(new_place)
+        new_places.append(new_place.as_dict())
+
+    result = jsonify(new_places)
 
     return result
 

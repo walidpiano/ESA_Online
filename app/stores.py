@@ -41,8 +41,15 @@ class CategoryStore(BaseStore):
         super().__init__(models.Category)
 
 
+class PlaceStore(BaseStore):
+
+    def __init__(self):
+        super().__init__(models.Place)
+
+
 class SendRegistration:
 
     @staticmethod
     def send_registration(registration):
         return registration
+

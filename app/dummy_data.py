@@ -16,7 +16,12 @@ dummy_categories = [
     models.Category(id=2, category='aqua'),
 ]
 
-def seed_courses(course_store, instructor_store, category_store):
+dummy_places = {
+    models.Place(id=1, place='f place'),
+    models.Place(id=2, place='s place')
+}
+
+def seed_courses(course_store, instructor_store, category_store, place_store):
     db.drop_all()
     db.create_all()
 
@@ -29,9 +34,13 @@ def seed_courses(course_store, instructor_store, category_store):
     for category in dummy_categories:
         category_store.add(category)
 
+    for place in dummy_places:
+        place_store.add(place)
+
 
 course_store = stores.CourseStore()
 instructor_store = stores.InstructorStore()
 category_store = stores.CategoryStore()
+place_store = stores.PlaceStore()
 
-seed_courses(course_store, instructor_store, category_store)
+seed_courses(course_store, instructor_store, category_store, place_store)
