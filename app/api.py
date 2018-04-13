@@ -4,6 +4,7 @@ from app import app, stores
 
 course_store = stores.CourseStore()
 instructor_store = stores.InstructorStore()
+category_store = stores.CategoryStore()
 
 @app.route("/api/courses/get")
 def get_courses():
@@ -43,6 +44,27 @@ def add_instructors():
         new_instructors.append(new_instructor.as_dict())
 
     result = jsonify(new_instructors)
+
+    return result
+
+
+@app.route("/api/categories/get")
+def get_categories():
+    result = [category.as_dict() for category in category_store.get_all()]
+    return jsonify(result)
+
+
+@app.route("/api/categories/add", methods=["POST"])
+def add_categories():
+    request_data = request.get_json()
+    category_store.delete()
+    new_categories = []
+    for category_row in request_data:
+        new_category = models.Category(id=category_row['id'], categor=category_row['category'])
+        category_store.add(new_category)
+        new_categories.append(new_category.as_dict())
+
+    result = jsonify(new_categories)
 
     return result
 

@@ -4,10 +4,11 @@ $(document).ready(function() {
         showOtherMonths: true,
     });
 
-    fillCourses();
+    
     fillInstructors();
     fillYears();
     fillDays();
+    fillCategories()
     fillCountries();
     $('.old').addClass('hide');
 
@@ -29,6 +30,11 @@ $(document).ready(function() {
             $('.old').removeClass('hide');
             $('.new').addClass('hide');
         }
+
+    })
+
+    $('#category').on('change', function() {
+        var cat = $('#category').val();
 
     })
 
@@ -153,6 +159,20 @@ $.ajax({
         }
     });
 }
+
+function fillCategories() {
+$.ajax({
+        type: "GET",
+        url: "/api/categories/get",
+        dataType: "json",
+        success: function(response) {
+            $.each(response, function (index, topic) {
+                $('#category').append(new Option(topic.category, topic.id, true, false));
+            });
+        }
+    });
+}
+
 
 function fillCourses() {
 $.ajax({

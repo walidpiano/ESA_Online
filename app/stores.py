@@ -32,6 +32,12 @@ class InstructorStore(BaseStore):
         super().__init__(models.Instructor)
 
 
+class CategoryStore(BaseStore):
+
+    def __init__(self):
+        super().__init__(models.Category)
+
+
 class SendRegistration:
 
     @staticmethod

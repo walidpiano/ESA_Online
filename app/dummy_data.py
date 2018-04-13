@@ -11,7 +11,12 @@ dummy_instructor = [
     models.Instructor(id=2, instructor='walid'),
 ]
 
-def seed_courses(course_store, instructor_store):
+dummy_categories = [
+    models.Category(id=1, category='prof'),
+    models.Category(id=2, category='aqua'),
+]
+
+def seed_courses(course_store, instructor_store, category_store):
     db.drop_all()
     db.create_all()
 
@@ -21,7 +26,12 @@ def seed_courses(course_store, instructor_store):
     for instructor in dummy_instructor:
         instructor_store.add(instructor)
 
+    for category in dummy_categories:
+        category_store.add(category)
+
 
 course_store = stores.CourseStore()
 instructor_store = stores.InstructorStore()
-seed_courses(course_store, instructor_store)
+category_store = stores.CategoryStore()
+
+seed_courses(course_store, instructor_store, category_store)

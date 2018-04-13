@@ -30,6 +30,19 @@ class Instructor(db.Model):
         }
 
 
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.String(100))
+
+    def __repr__(self):
+        return f'ID: {self.id}, Category: {self.category}'
+
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "category": self.category
+        }
+
 
 class Registration:
 
