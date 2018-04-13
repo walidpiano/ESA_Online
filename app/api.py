@@ -6,9 +6,10 @@ course_store = stores.CourseStore()
 instructor_store = stores.InstructorStore()
 category_store = stores.CategoryStore()
 
-@app.route("/api/courses/get")
-def get_courses():
-    result = [course.as_dict() for course in course_store.get_all()]
+
+@app.route("/api/courses/show/<int:category>")
+def get_courses(category):
+    result = [course.as_dict() for course in course_store.get_by_category(category)]
     return jsonify(result)
 
 
@@ -27,7 +28,7 @@ def add_courses():
     return result
 
 
-@app.route("/api/instructors/get")
+@app.route("/api/instructors/show")
 def get_instructors():
     result = [instructor.as_dict() for instructor in instructor_store.get_all()]
     return jsonify(result)
@@ -48,13 +49,13 @@ def add_instructors():
     return result
 
 
-@app.route("/api/categories/get")
+@app.route("/api/categories/show")
 def get_categories():
     result = [category.as_dict() for category in category_store.get_all()]
     return jsonify(result)
 
 
-@app.route("/api/categories/add", methods=["POST"])
+@app.route("/api/categories/show", methods=["POST"])
 def add_categories():
     request_data = request.get_json()
     category_store.delete()

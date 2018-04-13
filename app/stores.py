@@ -25,6 +25,9 @@ class CourseStore(BaseStore):
     def __init__(self):
         super().__init__(models.Course)
 
+    def get_by_category(self, category):
+        return self.data_provider.query.filter_by(category=category)
+
 
 class InstructorStore(BaseStore):
 

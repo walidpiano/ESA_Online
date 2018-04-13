@@ -4,12 +4,12 @@ $(document).ready(function() {
         showOtherMonths: true,
     });
 
-    
+
     fillInstructors();
     fillYears();
     fillDays();
+    $('#category').append(new Option("--select--", "", true, false));
     fillCategories()
-    fillCountries();
     $('.old').addClass('hide');
 
     $('#birth-year, #birth-month').on('change', function() {
@@ -35,6 +35,11 @@ $(document).ready(function() {
 
     $('#category').on('change', function() {
         var cat = $('#category').val();
+        if (cat!="") {
+            fillCourses(cat);
+        } else {
+            $('#course').html("");
+        }
 
     })
 
@@ -150,7 +155,7 @@ function readURL(input) {
 function fillInstructors() {
 $.ajax({
         type: "GET",
-        url: "/api/instructors/get",
+        url: "/api/instructors/show",
         dataType: "json",
         success: function(response) {
             $.each(response, function (index, topic) {
@@ -163,7 +168,7 @@ $.ajax({
 function fillCategories() {
 $.ajax({
         type: "GET",
-        url: "/api/categories/get",
+        url: "/api/categories/show",
         dataType: "json",
         success: function(response) {
             $.each(response, function (index, topic) {
@@ -174,12 +179,13 @@ $.ajax({
 }
 
 
-function fillCourses() {
+function fillCourses(category) {
 $.ajax({
         type: "GET",
-        url: "/api/courses/get",
+        url: "/api/courses/show/"+category,
         dataType: "json",
         success: function(response) {
+            $('#course').html("");
             $.each(response, function (index, topic) {
                 $('#course').append(new Option(topic.course, topic.course, true, false));
             });
