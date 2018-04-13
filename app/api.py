@@ -6,6 +6,7 @@ course_store = stores.CourseStore()
 instructor_store = stores.InstructorStore()
 category_store = stores.CategoryStore()
 place_store = stores.PlaceStore()
+point_store = stores.PointStore()
 
 
 @app.route("/api/courses/show/<int:category>")
@@ -88,6 +89,27 @@ def add_places():
         new_places.append(new_place.as_dict())
 
     result = jsonify(new_places)
+
+    return result
+
+
+@app.route("/api/points/show")
+def get_points():
+    result = [point.as_dict() for point in point_store.get_all()]
+    return jsonify(result)
+
+
+@app.route("/api/points/add", methods=["POST"])
+def add_points():
+    request_data = request.get_json()
+    point_store.delete()
+    new_points = []
+    for point_row in request_data:
+        new_point = models.Point(id=point_row['id'], point=point_row['point'])
+        point_store.add(new_point)
+        new_points.append(new_point.as_dict())
+
+    result = jsonify(new_points)
 
     return result
 

@@ -47,6 +47,12 @@ class PlaceStore(BaseStore):
         super().__init__(models.Place)
 
 
+class PointStore(BaseStore):
+
+    def __init__(self):
+        super().__init__(models.Point)
+
+
 class SendRegistration:
 
     @staticmethod

@@ -9,8 +9,9 @@ $(document).ready(function() {
     fillYears();
     fillDays();
     $('#category').append(new Option("--select--", "", true, false));
-    fillCategories()
-    fillPlaces()
+    fillCategories();
+    fillPlaces();
+    fillPoints();
     $('.old').addClass('hide');
 
     $('#birth-year, #birth-month').on('change', function() {
@@ -206,6 +207,20 @@ $.ajax({
         }
     });
 }
+
+function fillPoints() {
+$.ajax({
+        type: "GET",
+        url: "/api/points/show",
+        dataType: "json",
+        success: function(response) {
+            $.each(response, function (index, topic) {
+                $('#point').append(new Option(topic.point, topic.point, true, false));
+            });
+        }
+    });
+}
+
 
 function fillYears() {
     var i;

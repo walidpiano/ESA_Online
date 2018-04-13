@@ -60,6 +60,20 @@ class Place(db.Model):
         }
 
 
+class Point(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    point = db.Column(db.String(100))
+
+    def __repr__(self):
+        return f'ID: {self.id}, Point: {self.point}'
+
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "point": self.point
+        }
+
+
 class Registration:
 
     def __init__(self, student_image, student_type, full_name, address, country, state, city, email_address
