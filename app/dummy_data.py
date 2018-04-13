@@ -1,8 +1,9 @@
 from app import models, db, stores
 
 dummy_courses = [
-    models.Course(id=1, course_name='Aqua Dive'),
-    models.Course(id=2, course_name='First Aids'),
+    models.Course(id=1, course='Aqua Dive'),
+    models.Course(id=2, course='First Aids'),
+    models.Course(id=3, course='Walid'),
 ]
 
 

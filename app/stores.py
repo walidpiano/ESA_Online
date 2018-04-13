@@ -14,11 +14,22 @@ class BaseStore():
         db.session.commit()
         return entity
 
+    def delete(self):
+        result = self.data_provider.query.delete()
+        db.session.commit()
+        return result
+
 
 class CourseStore(BaseStore):
 
     def __init__(self):
         super().__init__(models.Course)
+
+
+class InstructorStore(BaseStore):
+
+    def __init__(self):
+        super().__init__(models.Instructor)
 
 
 class SendRegistration:

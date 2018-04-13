@@ -2,19 +2,33 @@ from app import db
 import datetime
 
 
-
 class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    course_name = db.Column(db.String(100))
+    course = db.Column(db.String(100))
 
     def __repr__(self):
-        return f'Id: {self.id}, Course Name: {self.course_name}'
+        return f'Id: {self.id}, Course Name: {self.course}'
 
     def as_dict(self):
         return {
             "id": self.id,
-            "course_name": self.course_name
+            "course": self.course
         }
+
+
+class Instructor(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    instructor = db.Column(db.String(100))
+
+    def __repr__(self):
+        return f'ID: {self.id}, Instructor: {self.instructor}'
+
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "instructor": self.instructor
+        }
+
 
 
 class Registration:
