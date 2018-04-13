@@ -31,7 +31,62 @@
                 <table>
                     <col width="25%">
                     <col width="75%">
-                    
+
+                    <tr>
+                        <td>
+                            <label for="instructor">Instructor:</label>
+                        </td>
+                        <td>
+                            <select name="instructor" id="instructor">
+
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="category">Category:</label>
+                        </td>
+                        <td>
+                            <select id="category">
+
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="course">Course:</label>
+                        </td>
+                        <td>
+                            <select name="course" id="course">
+
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="place">Place:</label>
+                        </td>
+                        <td>
+                            <select name="place" id="place">
+
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="esa-point">Point:</label>
+                        </td>
+                        <td>
+                            <select name="esa-point" id="esa-point">
+
+                            </select>
+                        </td>
+                    </tr>
+
                     <tr>
                         <td>
                             <label for="student-type">Student Type:</label>
@@ -46,59 +101,32 @@
                     
                     <tr>
                         <td>
-                            <label for="full-name">Full Name:</label>
+                            <label for="student-name">Full Name:</label>
                         </td>
                         <td>
-                            <input type="text" id="full-name" placeholder="full name" required>
+                            <input type="text" id="student-name" placeholder="student name" required>
                         </td>
                     </tr>
-                    
-                    <tr>
+
+                    <tr class="old">
                         <td>
-                            <label for="address">Address:</label>
+                            <label for="esa-number">ESA Number:</label>
                         </td>
                         <td>
-                            <input type="text" id="address" placeholder="address" required>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                            <label for="country">Country:</label>
-                        </td>
-                        <td>
-                            <div id="country-container"></div>
+                            <input type="text" id="esa-number" placeholder="student ESA number">
                         </td>
                     </tr>
-                    
-                    <tr>
+
+                    <tr class="new">
                         <td>
-                            <label for="state">State:</label>
+                            <label for="tax-code">Tax Code:</label>
                         </td>
                         <td>
-                            <input id="state" type="text" placeholder="state" required>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                            <label for="city">City:</label>
-                        </td>
-                        <td>
-                            <input id="city" type="text" placeholder="city" required>
+                            <input type="text" id="tax-code" placeholder="tax code">
                         </td>
                     </tr>
-                    
-                    <tr>
-                        <td>
-                            <label for="email">E-mail:</label>
-                        </td>
-                        <td>
-                            <input type="email" id="email" placeholder="e-mail address" required>
-                        </td>
-                    </tr>
-                    
-                    <tr>
+
+                    <tr class="new">
                         <td>
                             <label for="birth-year">Birth Date:</label>
                         </td>
@@ -128,15 +156,105 @@
 
                         </td>
                     </tr>
-                    
-                    <tr>
+
+                    <tr class="new">
                         <td>
-                            <label for="course">Course:</label>
+                            <label for="nationality">Nationality:</label>
                         </td>
                         <td>
-                            <select name="course" id="course">
+                            <div id="nationality-container"></div>
+                        </td>
+                    </tr>
 
+                    <tr class="new">
+                        <td>
+                            <label for="sex">Sex:</label>
+                        </td>
+                        <td>
+                            <select id="sex">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
+                        </td>
+                    </tr>
+
+                    <tr class="new">
+                        <td>
+                            <label for="birth-place">Birth Place:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="birth-place" placeholder="birth place">
+                        </td>
+                    </tr>
+                    <tr class="new">
+                        <td>
+                            <label for="home-phone">Home Phone:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="home-phone" placeholder="home phone">
+                        </td>
+                    </tr>
+
+                    <tr class="new">
+                        <td>
+                            <label for="cell-phone">Cell Phone:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="cell-phone" placeholder="cell phone" required>
+                        </td>
+                    </tr>
+
+                    <tr class="new">
+                        <td>
+                            <label for="country">Country:</label>
+                        </td>
+                        <td>
+                            <div id="country-container"></div>
+                        </td>
+                    </tr>
+                    
+                    <tr class="new">
+                        <td>
+                            <label for="state">State:</label>
+                        </td>
+                        <td>
+                            <input id="state" type="text" placeholder="state" required>
+                        </td>
+                    </tr>
+                    
+                    <tr class="new">
+                        <td>
+                            <label for="city">City:</label>
+                        </td>
+                        <td>
+                            <input id="city" type="text" placeholder="city" required>
+                        </td>
+                    </tr>
+
+                    <tr class="new">
+                        <td>
+                            <label for="address">Address:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="address" placeholder="address" required>
+                        </td>
+                    </tr>
+
+                    <tr class="new">
+                        <td>
+                            <label for="zip-code">ZIP Code:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="zip-code" placeholder="ZIP code">
+                        </td>
+                    </tr>
+
+                    <tr class="new">
+                        <td>
+                            <label for="email">E-mail:</label>
+                        </td>
+                        <td>
+                            <input type="email" id="email" placeholder="e-mail address" required>
                         </td>
                     </tr>
                     
