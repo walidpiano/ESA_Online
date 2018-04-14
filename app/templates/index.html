@@ -37,7 +37,7 @@
                             <label for="instructor">Instructor:</label>
                         </td>
                         <td>
-                            <select name="instructor" id="instructor">
+                            <select name="instructor" id="instructor" required>
 
                             </select>
                         </td>
@@ -48,7 +48,7 @@
                             <label for="category">Category:</label>
                         </td>
                         <td>
-                            <select id="category">
+                            <select id="category" required>
 
                             </select>
                         </td>
@@ -59,7 +59,7 @@
                             <label for="course">Course:</label>
                         </td>
                         <td>
-                            <select name="course" id="course">
+                            <select name="course" id="course" required>
 
                             </select>
                         </td>
@@ -70,7 +70,7 @@
                             <label for="place">Place:</label>
                         </td>
                         <td>
-                            <select name="place" id="place">
+                            <select name="place" id="place" required>
 
                             </select>
                         </td>
@@ -81,7 +81,7 @@
                             <label for="point">Point:</label>
                         </td>
                         <td>
-                            <select name="esa-point" id="point">
+                            <select name="esa-point" id="point" required>
 
                             </select>
                         </td>
@@ -92,7 +92,7 @@
                             <label for="student-type">Student Type:</label>
                         </td>
                         <td>
-                            <select name="Student Type" id="student-type">
+                            <select name="Student Type" id="student-type" required>
                                 <option value="New">New</option>
                                 <option value="Old">Old</option>
                             </select>
@@ -132,10 +132,10 @@
                         </td>
                         <td>
                             <div class="all-date">
-                                <select name="year" id="birth-year" placeholder="year">
+                                <select name="year" id="birth-year" placeholder="year" required>
 
                                 </select>
-                                <select name="month" id="birth-month" placeholder="month">
+                                <select name="month" id="birth-month" placeholder="month" required>
                                     <option value="1">Jan</option>
                                     <option value="2">Feb</option>
                                     <option value="3">Mar</option>
@@ -149,7 +149,7 @@
                                     <option value="11">Nov</option>
                                     <option value="12">Dec</option>
                                 </select>
-                                <select name="day" id="birth-day" placeholder="day">
+                                <select name="day" id="birth-day" placeholder="day" required>
 
                                 </select>
                             </div>
@@ -171,7 +171,7 @@
                             <label for="sex">Sex:</label>
                         </td>
                         <td>
-                            <select id="sex">
+                            <select id="sex" required>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
@@ -233,19 +233,19 @@
 
                     <tr class="new">
                         <td>
-                            <label for="address">Address:</label>
+                            <label for="zip-code">ZIP Code:</label>
                         </td>
                         <td>
-                            <input type="text" id="address" placeholder="address" required>
+                            <input type="text" id="zip-code" placeholder="ZIP code">
                         </td>
                     </tr>
 
                     <tr class="new">
                         <td>
-                            <label for="zip-code">ZIP Code:</label>
+                            <label for="address">Address:</label>
                         </td>
                         <td>
-                            <input type="text" id="zip-code" placeholder="ZIP code">
+                            <input type="text" id="address" placeholder="address" required>
                         </td>
                     </tr>
 
