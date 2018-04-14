@@ -7,6 +7,7 @@ instructor_store = stores.InstructorStore()
 category_store = stores.CategoryStore()
 place_store = stores.PlaceStore()
 point_store = stores.PointStore()
+send_registration = stores.SendRegistration()
 
 
 @app.route("/api/courses/show/<int:category>")
@@ -125,19 +126,22 @@ def new_registration():
     request_data = request.get_json()
 
     try:
-        registration = models.Registration(student_image=request_data["student_image"],
-                                           student_type=request_data["student_type"],
-                                           full_name=request_data["full_name"],
-                                           address=request_data["address"], country=request_data["country"],
-                                           state=request_data["state"], city=request_data["city"],
-                                           email_address=request_data["email_address"],
-                                           birth_year=request_data["birth_year"],
-                                           birth_month=request_data["birth_month"],
-                                           birth_day=request_data["birth_day"], course=request_data["course"],
-                                           comments=request_data["comments"])
+        registration = models.Registration(student_image=request_data['student_image'], instructor=request_data['instructor'],
+                                           category=request_data['category'], course=request_data['course'],
+                                           place=request_data['place'], point=request_data['point'],
+                                           student_type=request_data['student_type'], student_name=request_data['student_name'],
+                                           esa_number=request_data['esa_number'], tax_code=request_data['tax_code'],
+                                           birth_year=request_data['birth_year'], birth_month=request_data['birth_month'],
+                                           birth_day=request_data['birth_day'], nationality=request_data['nationality'],
+                                           sex=request_data['sex'], birth_place=request_data['birth_place'],
+                                           home_phone=request_data['home_phone'], cell_phone=request_data['cell_phone'],
+                                           country=request_data['country'], state=request_data['state'],
+                                           city=request_data['city'], zip_code=request_data['zip_code'],
+                                           address=request_data['address'], email_address=request_data['email_address'],
+                                           comments=request_data['comments'])
 
-        registration = stores.SendRegistration.send_registration(registration)
-        result = jsonify(registration.as_dict())
+        result = send_registration.send_registration(registration)
+        result = jsonify(result.as_dict())
     except KeyError:
         result = abort(400, f"couldn't parse the request data!")
 

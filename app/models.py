@@ -76,31 +76,57 @@ class Point(db.Model):
 
 class Registration:
 
-    def __init__(self, student_image, student_type, full_name, address, country, state, city, email_address
-                 , birth_year, birth_month, birth_day, course, comments):
+    def __init__(self, student_image, instructor, category, course, place, point, student_type,
+                 student_name, esa_number, tax_code, birth_year, birth_month, birth_day, nationality,
+                 sex, birth_place, home_phone, cell_phone, country, state, city, zip_code, address,
+                 email_address, comments):
         self.student_image = student_image
-        self.student_type = student_type
-        self.full_name = full_name
-        self.address = address
-        self.country = country
-        self.state = state
-        self.city = city
-        self.email_address = email_address
-        self.birth_date = datetime.datetime(year=int(birth_year), month=int(birth_month), day=int(birth_day))
+        self.instructor = instructor
+        self.category = category
         self.course = course
-        self.comments = comments
+        self.place = place
+        self.point = point
+        self.student_type = student_type
+        self.student_name = student_name.title()
+        self.esa_number = esa_number.upper()
+        self.tax_code = tax_code
+        self.birth_date = datetime.datetime(year=int(birth_year), month=int(birth_month), day=int(birth_day))
+        self.nationality = nationality
+        self.sex = sex
+        self.birth_place = birth_place.title()
+        self.home_phone = home_phone
+        self.cell_phone = cell_phone
+        self.country = country
+        self.state = state.title()
+        self.city = city.title()
+        self.zip_code = zip_code
+        self.address = address
+        self.email_address = email_address.lower()
+        self.comments = comments.replace(";", " ")
 
     def as_dict(self):
         return {
             "student_image": self.student_image,
+            "instructor": self.instructor,
+            "category": self.category,
+            "course": self.course,
+            "place": self.place,
+            "point": self.point,
             "student_type": self.student_type,
-            "full_name": self.full_name,
-            "address": self.address,
+            "student_name": self.student_name,
+            "esa_number": self.esa_number,
+            "tax_code": self.tax_code,
+            "birth_date": self.birth_date,
+            "nationality": self.nationality,
+            "sex": self.sex,
+            "birth_place": self.birth_place,
+            "home_phone": self.home_phone,
+            "cell_phone": self.cell_phone,
             "country": self.country,
             "state": self.state,
             "city": self.city,
+            "zip_code": self.zip_code,
+            "address": self.address,
             "email_address": self.email_address,
-            "birth_date": self.birth_date,
-            "course": self.course,
             "comments": self.comments,
         }

@@ -53,7 +53,7 @@ class PointStore(BaseStore):
         super().__init__(models.Point)
 
 
-class SendRegistration:
+class SendRegistration():
 
     @staticmethod
     def send_registration(registration):
