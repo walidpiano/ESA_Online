@@ -60,8 +60,8 @@ $(document).ready(function() {
 
     $(".content").submit(function(event) {
 
-    alert("submitted");
     event.preventDefault();
+
     var student_image;
     if ($('#student-image').attr('src') == '../static/img/empty_profile.jpg') {
         student_image = 'None';
@@ -120,8 +120,8 @@ $(document).ready(function() {
         "email_address": email,
         "comments": comments,
     }
-
-    alert(registration);
+    $.blockUI();
+    var result;
     $.ajax({
         type: "POST",
         url: "api/register",
@@ -130,11 +130,20 @@ $(document).ready(function() {
         dataType: "json",
         success: function(response) {
             console.log(response);
+            result = response;
         },
         error: function(error) {
             console.log(error);
+            result = false;
         }
     });
+    $.unblockUI();
+    if (result==false) {
+        alert('Failed to send registration!')
+    } else {
+        alert('Registration sent successfully!')
+        //clearAll();
+    }
 });
 
 });
