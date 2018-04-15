@@ -5,6 +5,11 @@ $(document).ready(function() {
     });
 
     loadData();
+
+    $('#instructor').on('change', function() {
+        localStorage.setItem("Instructor", $('#instructor').val());
+    })
+
     $('#birth-year, #birth-month').on('change', function() {
         fillDays();
     })
@@ -34,6 +39,7 @@ $(document).ready(function() {
         }
 
     })
+
 
     $('#category').on('change', function() {
         var cat = $('#category').val();
@@ -143,9 +149,12 @@ $(document).ready(function() {
     } else {
         alert('Registration sent successfully!')
         //clearAll();
+
     }
 });
 
+
+$('#instructor').val($('#last-instructor').val());
 });
 
 function loadData() {
@@ -212,8 +221,9 @@ $.ajax({
         url: "/api/instructors/show",
         dataType: "json",
         success: function(response) {
+            var lastInstructor = localStorage.getItem('Instructor');
             $.each(response, function (index, topic) {
-                $('#instructor').append(new Option(topic.instructor, topic.id, true, false));
+                $('#instructor').append(new Option(topic.instructor, topic.id, true, topic.id == lastInstructor));
             });
         }
     });
