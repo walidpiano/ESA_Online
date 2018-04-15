@@ -140,6 +140,7 @@ def new_registration():
                                            address=request_data['address'], email_address=request_data['email_address'],
                                            comments=request_data['comments'])
 
+
         result = send_registration.send_registration(registration)
         result = jsonify(result.as_dict())
     except KeyError:
