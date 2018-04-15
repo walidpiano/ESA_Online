@@ -29,7 +29,3 @@ def send_mail(subject, message):
         result = False
 
     return result
-
-
-result = send_mail('ww', 'wwwww')
-print(result)

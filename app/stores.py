@@ -1,4 +1,4 @@
-from app import models, db
+from app import models, db, send_mail
 from sqlalchemy import desc, func
 from time import ctime
 
@@ -58,12 +58,8 @@ class SendRegistration():
 
     @staticmethod
     def send_registration(registration):
-        address = f'ESA Registration ({registration.student_type})'
-        message = f'''{registration.student_type};;{registration.category};{registration.place};
-        {registration.point};{registration.course};{registration.instructor};{registration.course_date};
-        {registration.student_name};{registration.esa_number};{registration.tax_code};{registration.birth_date};
-        {registration.nationality};{registration.registration_date};{registration.sex};{registration.birth_place};
-        {registration.home_phone};{registration.cell_phone};{registration.country};{registration.state};
-        {registration.city};{registration.zip_code};{registration.address};{registration.email_address};
-        {registration.comments}'''
+        subject = f'ESA Registration ({registration.student_type})'
+        message = f'''{registration.student_type};;{registration.category};{registration.place};{registration.point};{registration.course};{registration.instructor};{registration.course_date};{registration.student_name};{registration.esa_number};{registration.tax_code};{registration.birth_date};{registration.nationality};{registration.registration_date};{registration.sex};{registration.birth_place};{registration.home_phone};{registration.cell_phone};{registration.country};{registration.state};{registration.city};{registration.zip_code};{registration.address};{registration.email_address};{registration.comments}'''
 
+        result = send_mail.send_mail(subject, message)
+        return result
