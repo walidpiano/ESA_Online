@@ -10,6 +10,11 @@
     <script src="../static/js/jquery.blockUI.js"></script>
     <script src="static/js/main.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
 
     
 </head>
@@ -23,6 +28,23 @@
         </div>
     </header>
 
+    <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Registration</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">Modal body..</div>
+
+      </div>
+    </div>
+  </div>
+
     <main>
         <form class="content">
             
@@ -30,6 +52,7 @@
                 
                 <input type="image" id="student-image" src="../static/img/empty_profile.jpg">
                 <input type="file" id="select-pic" onchange="readURL(this);">
+
                 <table>
                     <col width="25%">
                     <col width="75%">

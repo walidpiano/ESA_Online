@@ -144,13 +144,14 @@ $(document).ready(function() {
         }
     });
     $.unblockUI();
-    if (result==false) {
-        alert('Failed to send registration!')
+    showResult(result);
+    if (result == false) {
+        showResult(false);
     } else {
-        alert('Registration sent successfully!')
-        //clearAll();
-
+        showResult(true);
+        clearAll();
     }
+
 });
 
 
@@ -181,6 +182,7 @@ function fill() {
 }
 
 function clearAll() {
+
     $("#student-name").val("");
     $("#esa-number").val("");
     $("#tax-code").val("");
@@ -317,3 +319,14 @@ function fillCountries() {
 }
 
 
+function showResult(succeeded) {
+    if (succeeded) {
+        $('.modal-body').text('Registration Sent Successfully!');
+        $('.modal-header').removeClass('modal-header-fail');
+        $('#myModal').modal('toggle');
+    } else {
+        $('.modal-body').text('Oops! Registration Not Sent!');
+        $('.modal-header').addClass('modal-header-fail');
+        $('#myModal').modal('toggle');
+    }
+}

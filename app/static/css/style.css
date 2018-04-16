@@ -119,6 +119,14 @@ table {
     display: none;
 }
 
+.modal-header {
+    background-color: #0480be;
+    color: white;
+}
+
+.modal-header-fail {
+    background-color: red;
+}
 
 @media (max-width: 500px) {
     #logo {
