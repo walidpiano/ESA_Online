@@ -61,16 +61,14 @@ input, select, textarea {
     width: 85%;
 }
 #cancel {
-    color: red;
-    border-radius: 5px;
     width: 140px;
     display: inline;
+    font-size: 19px;
 }
 #submit {
-    color: green;
-    border-radius: 5px;
     width: 140px;
     display: inline;
+    font-size: 19px;
 }
 
 #student-image {
