@@ -115,6 +115,15 @@ table {
     text-align: left;
 }
 
+#my-signature {
+    margin: 10px auto 10px auto;
+    position: center;
+}
+
+#my-mail {
+    font-size: 18px;
+    color: white;
+}
 .hide {
     display: none;
 }
@@ -128,12 +137,12 @@ table {
     background-color: red;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
     #logo {
         max-width: 220px;
     }
     h2 {
-        font-size: 15px;
+        font-size: 22px;
         padding: 10px 0 12px 0;
     }
     form {
@@ -178,7 +187,13 @@ table {
         margin: 5px auto;
         padding: 0;
         position: center;
+        font-size: 17px;
     }
 
 }
 
+@media (max-width: 400px) {
+    h2 {
+        font-size: 17px;
+    }
+}
