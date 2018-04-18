@@ -1,3 +1,5 @@
+import os
+
 from flask import render_template, request, redirect, url_for, jsonify, abort
 from app import models
 from app import app, stores
@@ -126,12 +128,15 @@ def new_registration():
     request_data = request.get_json()
 
     try:
-        registration = models.Registration(student_image=request_data['student_image'], instructor=request_data['instructor'],
+        registration = models.Registration(student_image=request_data['student_image'],
+                                           instructor=request_data['instructor'],
                                            category=request_data['category'], course=request_data['course'],
                                            place=request_data['place'], point=request_data['point'],
-                                           student_type=request_data['student_type'], student_name=request_data['student_name'],
+                                           student_type=request_data['student_type'],
+                                           student_name=request_data['student_name'],
                                            esa_number=request_data['esa_number'], tax_code=request_data['tax_code'],
-                                           birth_year=request_data['birth_year'], birth_month=request_data['birth_month'],
+                                           birth_year=request_data['birth_year'],
+                                           birth_month=request_data['birth_month'],
                                            birth_day=request_data['birth_day'], nationality=request_data['nationality'],
                                            sex=request_data['sex'], birth_place=request_data['birth_place'],
                                            home_phone=request_data['home_phone'], cell_phone=request_data['cell_phone'],
@@ -150,6 +155,15 @@ def new_registration():
         result = abort(400, f"couldn't parse the request data!")
 
     return result
+
+
+@app.route('/upload', methods=['POST', 'GET'])
+def user_upload_photo():
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify(False)
+    file.save(app.config['UPLOAD_FOLDER'], 'profile.pic')
+    return jsonify(True)
 
 
 @app.errorhandler(400)
