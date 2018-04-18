@@ -1,4 +1,7 @@
+var stringImage = '';
+
 $(document).ready(function() {
+
     $("#birth-date").datepicker({
         inline: true,
         showOtherMonths: true,
@@ -72,7 +75,7 @@ $(document).ready(function() {
     if ($('#student-image').attr('src') == '../static/img/empty_profile.jpg') {
         student_image = 'None';
     } else {
-        student_image = $('#student-image').attr('src');
+        student_image = stringImage;
     }
     instructor = $('#instructor').val();
     category = $('#category').val();
@@ -182,7 +185,7 @@ function fill() {
 }
 
 function clearAll() {
-
+    stringImage = '';
     $("#student-name").val("");
     $("#esa-number").val("");
     $("#tax-code").val("");
@@ -211,6 +214,7 @@ function readURL(input) {
         reader.onload = function (e) {
             $('#student-image')
                 .attr('src', e.target.result);
+            stringImage = e.target.result.toString();
         };
 
         reader.readAsDataURL(input.files[0]);

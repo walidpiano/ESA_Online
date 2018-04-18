@@ -125,7 +125,7 @@ class Registration:
 
     def as_dict(self):
         return {
-            "student_image": self.student_image,
+            "student_image": 'Received',
             "instructor": self.instructor,
             "category": self.category,
             "course": self.course,
