@@ -129,7 +129,7 @@ $(document).ready(function() {
         "email_address": email,
         "comments": comments,
     }
-    $.blockUI();
+    
     var result;
     $.ajax({
         type: "POST",
@@ -146,7 +146,7 @@ $(document).ready(function() {
             result = false;
         }
     });
-    $.unblockUI();
+
     showResult(result);
     if (result == false) {
         showResult(false);
