@@ -228,9 +228,16 @@ $.ajax({
         dataType: "json",
         success: function(response) {
             var lastInstructor = localStorage.getItem('Instructor');
-            $.each(response, function (index, topic) {
-                $('#instructor').append(new Option(topic.instructor, topic.id, true, topic.id == lastInstructor));
-            });
+            try {
+                $.each(response, function (index, topic) {
+                    $('#instructor').append(new Option(topic.instructor, topic.id, true, topic.id == lastInstructor));
+                });
+            } catch(err) {
+                $.each(response, function (index, topic) {
+                    $('#instructor').append(new Option(topic.instructor, topic.id, true, false));
+                });
+            }
+
         }
     });
 }
