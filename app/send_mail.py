@@ -10,8 +10,6 @@ def send_mail(subject, message, with_image, student_image_name):
     from_address = 'esaegypt@yahoo.com'
     to_address = 'esaegypt@yahoo.com'
     try:
-        image_name = f'app/uploaded_images/{student_image_name}.jpg'
-        img_data = open(image_name, 'rb').read()
         msg = MIMEMultipart()
         msg['Subject'] = subject
         msg['From'] = from_address
@@ -20,7 +18,10 @@ def send_mail(subject, message, with_image, student_image_name):
         text = MIMEText(message)
         msg.attach(text)
 
+        image_name = ''
         if with_image:
+            image_name = f'app/uploaded_images/{student_image_name}.jpg'
+            img_data = open(image_name, 'rb').read()
             image = MIMEImage(img_data, name=os.path.basename(image_name))
             msg.attach(image)
 

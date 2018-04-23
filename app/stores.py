@@ -81,4 +81,5 @@ class SendRegistration():
             with open(f'app/uploaded_images/{image_name}.jpg', 'wb') as f:
                 f.write(image_data)
             result = True
+
         return result
