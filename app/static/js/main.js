@@ -25,6 +25,7 @@ $(document).ready(function() {
     $('#student-type').on('change', function() {
         if ($('#student-type').val() == "New") {
             $('.old').addClass('hide');
+            $('#birth-place').prop('disabled', false);
             $('#cell-phone').prop('disabled', false);
             $('#state').prop('disabled', false);
             $('#city').prop('disabled', false);
@@ -33,6 +34,7 @@ $(document).ready(function() {
             $('.new').removeClass('hide');
         } else {
             $('.old').removeClass('hide');
+            $('#birth-place').prop('disabled', true);
             $('#cell-phone').prop('disabled', true);
             $('#state').prop('disabled', true);
             $('#city').prop('disabled', true);
