@@ -7,6 +7,6 @@ message = 'test attchment'
 with_image = True
 
 #result = send_mail.send_mail(subject, message, with_image)
-result = send_mail.send_mail(subject, message, False, 'd')
+result = send_mail.send_mail(subject, message, False, '')
 
 print(result)
