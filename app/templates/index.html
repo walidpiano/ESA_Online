@@ -61,7 +61,7 @@
                     <col width="25%">
                     <col width="75%">
 
-                    <tr>
+                    <tr id="instructor-select">
                         <td>
                             <label for="instructor">Instructor:</label>
                         </td>
@@ -69,6 +69,15 @@
                             <select name="instructor" id="instructor" required>
 
                             </select>
+                        </td>
+                    </tr>
+
+                    <tr id="instructor-insert" class="hide">
+                        <td>
+                            <label for="instructor-text">Instructor:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="instructor-text" required>
                         </td>
                     </tr>
 
@@ -212,7 +221,7 @@
                             <label for="birth-place">Birth Place:</label>
                         </td>
                         <td>
-                            <input type="text" id="birth-place" placeholder="birth place" required>
+                            <input type="text" id="birth-place" placeholder="birth place">
                         </td>
                     </tr>
                     <tr class="new">
@@ -283,7 +292,7 @@
                             <label for="email">E-mail:</label>
                         </td>
                         <td>
-                            <input type="email" id="email" placeholder="e-mail address" required>
+                            <input type="email" id="email" placeholder="e-mail address">
                         </td>
                     </tr>
                     
