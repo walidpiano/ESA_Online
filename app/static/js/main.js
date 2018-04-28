@@ -26,6 +26,7 @@ $(document).ready(function() {
         if ($('#student-type').val() == "New") {
             $('.old').addClass('hide');
             $('#cell-phone').prop('disabled', false);
+            $('#birth-place').prop('disabled', false);
             $('#state').prop('disabled', false);
             $('#city').prop('disabled', false);
             $('#address').prop('disabled', false);
@@ -34,13 +35,13 @@ $(document).ready(function() {
         } else {
             $('.old').removeClass('hide');
             $('#cell-phone').prop('disabled', true);
+            $('#birth-place').prop('disabled', true);
             $('#state').prop('disabled', true);
             $('#city').prop('disabled', true);
             $('#address').prop('disabled', true);
             $('#email').prop('disabled', true);
             $('.new').addClass('hide');
         }
-
     })
 
 
@@ -77,7 +78,8 @@ $(document).ready(function() {
     } else {
         student_image = stringImage;
     }
-    instructor = $('#instructor').val();
+    var isNotApp = browserOrApp();
+
     category = $('#category').val();
     course = $('#course').val();
     place = $('#place').val();
@@ -102,58 +104,71 @@ $(document).ready(function() {
     email = $('#email').val();
     comments = $('#comments').val();
 
-    registration = {
-        "student_image": student_image,
-        "instructor": instructor,
-        "category": category,
-        "course": course,
-        "place": place,
-        "point": point,
-        "student_type": student_type,
-        "student_name": student_name,
-        "esa_number": esa_number,
-        "tax_code": tax_code,
-        "birth_year": birth_year,
-        "birth_month": birth_month,
-        "birth_day": birth_day,
-        "nationality": nationality,
-        "sex": sex,
-        "birth_place": birth_place,
-        "home_phone": home_phone,
-        "cell_phone": cell_phone,
-        "country": country,
-        "state": state,
-        "city": city,
-        "zip_code": zip_code,
-        "address": address,
-        "email_address": email,
-        "comments": comments,
-    }
-    
-    var result;
-    $.ajax({
-        type: "POST",
-        url: "api/register",
-        data: JSON.stringify(registration),
-        contentType: "application/json; charset=UTF-8",
-        dataType: "json",
-        success: function(response) {
-            console.log(response);
-            result = response;
-        },
-        error: function(error) {
-            console.log(error);
-            result = false;
-        }
-    });
-
-    showResult(result);
-    if (result == false) {
-        showResult(false);
+    if (isNotApp) {
+        instructor = $('#instructor').val();
     } else {
-        showResult(true);
-        clearAll();
+        instructor = getInstructorId($('#instructor-text').val());
     }
+
+
+    if (instructor == 0) {
+        showWrongInstructor();
+    } else {
+        registration = {
+            "student_image": student_image,
+            "instructor": instructor,
+            "category": category,
+            "course": course,
+            "place": place,
+            "point": point,
+            "student_type": student_type,
+            "student_name": student_name,
+            "esa_number": esa_number,
+            "tax_code": tax_code,
+            "birth_year": birth_year,
+            "birth_month": birth_month,
+            "birth_day": birth_day,
+            "nationality": nationality,
+            "sex": sex,
+            "birth_place": birth_place,
+            "home_phone": home_phone,
+            "cell_phone": cell_phone,
+            "country": country,
+            "state": state,
+            "city": city,
+            "zip_code": zip_code,
+            "address": address,
+            "email_address": email,
+            "comments": comments,
+        }
+
+        var result;
+        $.ajax({
+            type: "POST",
+            url: "api/register",
+            data: JSON.stringify(registration),
+            contentType: "application/json; charset=UTF-8",
+            dataType: "json",
+            success: function(response) {
+                console.log(response);
+                result = response;
+            },
+            error: function(error) {
+                console.log(error);
+                result = false;
+            }
+        });
+
+        showResult(result);
+        if (result == false) {
+            showResult(false);
+        } else {
+            showResult(true);
+            clearAll();
+        }
+
+    }
+
 
 });
 
@@ -163,6 +178,7 @@ $('#instructor').val($('#last-instructor').val());
 
 function loadData() {
     fillInstructors();
+    inputOrSelection();
     fillYears();
     fillDays();
     $('#category').append(new Option("--select--", "", true, false));
@@ -220,6 +236,7 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+var instructorList = [];
 
 function fillInstructors() {
 $.ajax({
@@ -228,8 +245,11 @@ $.ajax({
         dataType: "json",
         success: function(response) {
             var lastInstructor = localStorage.getItem('Instructor');
+            instructorList = [];
+
             try {
                 $.each(response, function (index, topic) {
+                    instructorList.push([topic.id, topic.instructor])
                     $('#instructor').append(new Option(topic.instructor, topic.id, true, topic.id == lastInstructor));
                 });
             } catch(err) {
@@ -340,4 +360,50 @@ function showResult(succeeded) {
         $('.modal-header').addClass('modal-header-fail');
         $('#myModal').modal('toggle');
     }
+}
+
+function showWrongInstructor() {
+    $('.modal-body').text('Oops, instructor name is incorrect!');
+    $('.modal-header').addClass('modal-header-fail');
+    $('#myModal').modal('toggle');
+}
+
+function getInstructorId(instructorName) {
+    result = 0;
+    instructorList.forEach(function(instructor) {
+        if (instructor[1] === instructorName) {
+            result = instructor[0];
+        }
+    })
+    return result
+}
+
+function inputOrSelection() {
+    var isNotApp = browserOrApp();
+    if (isNotApp) {
+        $('#instructor-text').prop('disabled', true);
+
+    } else {
+        $('#instructor-insert').removeClass('hide');
+        $('#instructor-select').addClass('hide');
+        $('#instructor-text').prop('disabled', false);
+        $('#instructor').prop('disabled', true)
+    }
+
+}
+
+function browserOrApp() {
+    result = false;
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+    var isEdge = !isIE && !!window.StyleMedia;
+    var isChrome = !!window.chrome && !!window.chrome.webstore;
+    var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+    if (isOpera || isFirefox || isSafari || isIE || isEdge || isChrome || isBlink) {
+        result = true;
+    }
+    return result;
 }
