@@ -106,6 +106,7 @@ $(document).ready(function() {
     email = $('#email').val();
     comments = $('#comments').val();
 
+
     if (isNotApp) {
         instructor = $('#instructor').val();
     } else {
@@ -247,6 +248,7 @@ $.ajax({
         dataType: "json",
         success: function(response) {
         var lastInstructor;
+        instructorList = []
         try {
             lastInstructor = localStorage.getItem('Instructor');
         } catch(err) {
@@ -254,6 +256,7 @@ $.ajax({
         }
 
             $.each(response, function (index, topic) {
+                instructorList.push([topic.id, topic.instructor])
                 $('#instructor').append(new Option(topic.instructor, topic.id, true, topic.id == lastInstructor));
             });
         }
@@ -369,7 +372,8 @@ function showWrongInstructor() {
 function getInstructorId(instructorName) {
     result = 0;
     instructorList.forEach(function(instructor) {
-        if (instructor[1] === instructorName) {
+        if (instructor[1].toLowerCase() == instructorName.toLowerCase()) {
+
             result = instructor[0];
         }
     })
@@ -378,6 +382,7 @@ function getInstructorId(instructorName) {
 
 function inputOrSelection() {
     var isNotApp = browserOrApp();
+
     if (isNotApp) {
         $('#instructor-text').prop('disabled', true);
 
