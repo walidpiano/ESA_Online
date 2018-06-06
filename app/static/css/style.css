@@ -78,8 +78,10 @@ input, select, textarea {
 #student-image {
     height: 200px;
     width: 180px;
-    border-radius: 20px;
-    margin: 0 auto;
+    border-radius: 15px;
+    margin: 10px auto;
+    border: 2px solid gray;
+    padding: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
     -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
