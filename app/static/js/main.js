@@ -192,17 +192,6 @@ function loadData() {
     fillCountries();
 }
 
-function fill() {
-    $("#full-name").val("rr");
-    $("#address").val("rr");
-    $("#country").val("rr");
-    $("#state").val("rr");
-    $("#city").val("rr");
-    $("#email").val("walidpiano@yahoo.com");
-    $("#birth-date").val("10/10/2018");
-    $("textarea").val("tttttt");
-}
-
 function clearAll() {
     stringImage = '';
     $("#student-name").val("");
