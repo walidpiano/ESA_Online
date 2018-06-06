@@ -32,6 +32,12 @@ $(document).ready(function() {
             $('#city').prop('disabled', false);
             $('#address').prop('disabled', false);
             $('#email').prop('disabled', false);
+            $('#birth-year').prop('disabled', false);
+            $('#birth-month').prop('disabled', false);
+            $('#birth-day').prop('disabled', false);
+            $('#country').prop('disabled', false);
+
+
             $('.new').removeClass('hide');
         } else {
             $('.old').removeClass('hide');
@@ -42,6 +48,10 @@ $(document).ready(function() {
             $('#city').prop('disabled', true);
             $('#address').prop('disabled', true);
             $('#email').prop('disabled', true);
+            $('#birth-year').prop('disabled', true);
+            $('#birth-month').prop('disabled', true);
+            $('#birth-day').prop('disabled', true);
+            $('#country').prop('disabled', true);
             $('.new').addClass('hide');
         }
     })
