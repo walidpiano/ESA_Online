@@ -80,6 +80,9 @@ input, select, textarea {
     width: 180px;
     border-radius: 20px;
     margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 }
 #select-pic {
     display: none;
