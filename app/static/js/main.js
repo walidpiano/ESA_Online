@@ -153,6 +153,7 @@ $(document).ready(function() {
             "address": address,
             "email_address": email,
             "comments": comments,
+            "message_to_read": CreateMessage(),
         }
 
         var result;
@@ -203,6 +204,7 @@ function loadData() {
 }
 
 function clearAll() {
+    CreateMessage();
     stringImage = '';
     $("#student-name").val("");
     $("#esa-number").val("");
@@ -421,4 +423,49 @@ function browserOrApp() {
     }
 
 
+}
+
+function CreateMessage() {
+    var result = "";
+    var newOrOld;
+    if ($('#student-type').val() == 0)
+    {
+        result = "\n\n\nMessage:\nInstructor : " + $('#instructor option:selected').text() + $('#instructor-text').val();
+        result += "\nCategory   : " + $('#category option:selected').text();
+        result += "\nCourse     : " + $('#course option:selected').text();
+        result += "\nPlace      : " + $('#place option:selected').text();
+        result += "\nPoint      : " + $('#point option:selected').text();
+        result += "\nType       : New";
+        result += "\nFull Name  : " + $('#student-name').val();
+        result += "\nTax Code   : " + $('#tax-code').val();
+        result += "\nBirth Date : " + ($('#birth-day option:selected').text() + ' ' + $('#birth-month option:selected').text() + ', ' + $('#birth-year option:selected').text());
+        result += "\nNationality: " + $('#nationality option:selected').text();
+        result += "\nSex        : " + $('#sex option:selected').text();
+        result += "\nBirth Place: " + $('#birth-place').val();
+        result += "\nHome Phone : " + $('#home-phone').val();
+        result += "\nCellPhone  : " + $('#cell-phone').val();
+        result += "\nCountry    : " + $('#country option:selected').text();
+        result += "\nState      : " + $('#state').val();
+        result += "\nCity       : " + $('#city').val();
+        result += "\nZIP Code   : " + $('#zip-code').val();
+        result += "\nAddrss     : " + $('#address').val();
+        result += "\nE-mail     : " + $('#email').val();
+        result += "\nComments   : " + $('#comments').val();
+
+    }
+    else
+    {
+
+    result = "\n\n\nMessage:\nInstructor : " + $('#instructor option:selected').text() + $('#instructor-text').val();
+        result += "\nCategory   : " + $('#category option:selected').text();
+        result += "\nCourse     : " + $('#course option:selected').text();
+        result += "\nPlace      : " + $('#place option:selected').text();
+        result += "\nPoint      : " + $('#point option:selected').text();
+        result += "\nType       : New";
+        result += "\nFull Name  : " + $('#student-name').val();
+        result += "\nESA No.    : ";
+        result += "\nComments   : " + $('#comments').val();
+    }
+
+    return result;
 }

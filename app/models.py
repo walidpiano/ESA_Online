@@ -79,7 +79,7 @@ class Registration:
     def __init__(self, student_image, instructor, category, course, place, point, student_type,
                  student_name, esa_number, tax_code, birth_year, birth_month, birth_day, nationality,
                  sex, birth_place, home_phone, cell_phone, country, state, city, zip_code, address,
-                 email_address, comments):
+                 email_address, comments, message_to_read):
         self.student_image = student_image
         self.instructor = instructor
         self.category = category
@@ -122,6 +122,7 @@ class Registration:
             self.zip_code = zip_code.strip().replace(";", " ")
             self.address = address.strip().replace(";", " ")
             self.email_address = email_address.lower().replace(";", " ")
+        self.message_to_read = message_to_read
 
     def as_dict(self):
         return {
@@ -149,5 +150,7 @@ class Registration:
             "email_address": self.email_address,
             "comments": self.comments,
             "course_date": self.course_date,
-            "registration_date": self.registration_date
+            "registration_date": self.registration_date,
+            "message_to_read": self.message_to_read,
         }
+

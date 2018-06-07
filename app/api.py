@@ -143,7 +143,7 @@ def new_registration():
                                            country=request_data['country'], state=request_data['state'],
                                            city=request_data['city'], zip_code=request_data['zip_code'],
                                            address=request_data['address'], email_address=request_data['email_address'],
-                                           comments=request_data['comments'])
+                                           comments=request_data['comments'], message_to_read=request_data['message_to_read'])
 
         result = send_registration.send_registration(registration)
         if result:
