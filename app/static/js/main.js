@@ -428,7 +428,7 @@ function browserOrApp() {
 function CreateMessage() {
     var result = "";
     var newOrOld;
-    if ($('#student-type').val() == 0)
+    if ($('#student-type').val() == "New")
     {
         result = "\n\n\nMessage:\nInstructor : " + $('#instructor option:selected').text() + $('#instructor-text').val();
         result += "\nCategory   : " + $('#category option:selected').text();
@@ -461,9 +461,9 @@ function CreateMessage() {
         result += "\nCourse     : " + $('#course option:selected').text();
         result += "\nPlace      : " + $('#place option:selected').text();
         result += "\nPoint      : " + $('#point option:selected').text();
-        result += "\nType       : New";
+        result += "\nType       : Old";
         result += "\nFull Name  : " + $('#student-name').val();
-        result += "\nESA No.    : ";
+        result += "\nESA No.    : " + $('#esa-number').val();
         result += "\nComments   : " + $('#comments').val();
     }
 
