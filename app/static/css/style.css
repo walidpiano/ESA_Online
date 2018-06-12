@@ -140,6 +140,12 @@ table {
     color: white;
 }
 
+#android-link {
+    margin-bottom: 35px;
+    padding: 10px;
+    display: none;
+}
+
 .modal-header-fail {
     background-color: red;
 }
