@@ -428,9 +428,18 @@ function browserOrApp() {
 function CreateMessage() {
     var result = "";
     var newOrOld;
+    var isNotApp = browserOrApp();
+
     if ($('#student-type').val() == "New")
     {
-        result = "\n\n\nMessage:\nInstructor : " + $('#instructor option:selected').text() + $('#instructor-text').val();
+        if (isNotApp) {
+            result = "\n\n\nMessage:\nInstructor : " + $('#instructor option:selected').text();
+        }
+        else
+        {
+            result = "\n\n\nMessage:\nInstructor : " + $('#instructor-text').val();
+        }
+
         result += "\nCategory   : " + $('#category option:selected').text();
         result += "\nCourse     : " + $('#course option:selected').text();
         result += "\nPlace      : " + $('#place option:selected').text();
@@ -456,7 +465,13 @@ function CreateMessage() {
     else
     {
 
-    result = "\n\n\nMessage:\nInstructor : " + $('#instructor option:selected').text() + $('#instructor-text').val();
+        if (isNotApp) {
+            result = "\n\n\nMessage:\nInstructor : " + $('#instructor option:selected').text();
+        }
+        else
+        {
+            result = "\n\n\nMessage:\nInstructor : " + $('#instructor-text').val();
+        }
         result += "\nCategory   : " + $('#category option:selected').text();
         result += "\nCourse     : " + $('#course option:selected').text();
         result += "\nPlace      : " + $('#place option:selected').text();

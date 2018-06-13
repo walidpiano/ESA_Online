@@ -142,8 +142,8 @@ table {
 
 #android-link {
     margin-bottom: 35px;
-    padding: 10px;
-    display: relative;
+    padding: 20px;
+    display: none;
 }
 
 .modal-header-fail {
